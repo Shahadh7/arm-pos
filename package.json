@@ -24,7 +24,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^24.1.0",
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@vitejs/plugin-vue": "^4.1.0",
     "electron": "^23.1.1",
     "electron-builder": "^24.3.0",

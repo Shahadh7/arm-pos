@@ -13,9 +13,18 @@
     "skipLibCheck": true,
     "noEmit": true,
     "allowJs": true,
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "include": ["src"],
-  "references": [
-    { "path": "./tsconfig.node.json" }
-  ]
+  "exclude": [
+    "node_modules"
+  ],
 }

@@ -5,6 +5,7 @@ import electron from 'vite-plugin-electron'
 import renderer from 'vite-plugin-electron-renderer'
 import pkg from './package.json'
 import path from 'path'
+import { viteCommonjs, esbuildCommonjs } from '@originjs/vite-plugin-commonjs';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
@@ -26,8 +27,17 @@ export default defineConfig(({ command }) => {
       }
     },
 
+    build: {
+      rollupOptions: {
+        external: [{sequelize: "require('sequelize')", sqlite3: "require('sqlite3')"}], // add this line
+      },
+    },
+
+    
+
     plugins: [
       vue(),
+      viteCommonjs(),
       electron([
         {
           // Main-Process entry file of the Electron App.
@@ -72,6 +82,16 @@ export default defineConfig(({ command }) => {
       // Use Node.js API in the Renderer-process
       renderer(),
     ],
+
+    optimizeDeps: {
+      force: true,
+      esbuildOptions: {
+        plugins: [
+          esbuildCommonjs([{sequelize: "require('sequelize')", sqlite3: "require('sqlite3')"}]),
+        ],
+      },
+    },
+
     server: process.env.VSCODE_DEBUG && (() => {
       const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
       return {

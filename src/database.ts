@@ -20,6 +20,7 @@ const locDb = path.join(
 // setup the connection to make sure it works
 const sequelize = new Sequelize({
     dialect: 'sqlite',
+    dialectModule: require('sqlite3'),
     // todo change this to locDb for using db inside src/pos.db
     storage: univDb,
     // ** db event logging true in dev and false in production
