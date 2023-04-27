@@ -22,6 +22,7 @@ export default defineConfig(({ command }) => {
       alias: {
         '@': path.resolve(__dirname, './src'),
         '@assets': path.resolve(__dirname, './src/assets'),
+        "pg-hstore": path.resolve(__dirname, "empty_module"),
       }
     },
 

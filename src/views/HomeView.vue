@@ -55,10 +55,39 @@
             </div>
         </div>
 
+        {{ sharkList }}
+
     </div>
 </template>
 
 <script setup lang="ts">
+import { onMounted, reactive } from 'vue'
+import { createShark, getAllSharks } from '../modelapi/shark'
+
+interface NewUser {
+  name: string | null;
+  sharktype: string | null;
+  id?: number | null;
+  length: number | null;
+}
+
+const sharkList  = reactive<NewUser[]>([])
+
+
+onMounted(async () => {
+    
+    let createnew = await createShark({name: 'test', sharktype: 'test', length: 1})
+
+    if(createnew) {
+        console.log('created')
+        let list = await getAllSharks()
+        sharkList.push(...list)
+    } else {
+        console.log('not created')
+    }
+
+    
+})
 
 </script>
 

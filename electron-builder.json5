@@ -10,7 +10,8 @@
   },
   "files": [
     "dist-electron",
-    "dist"
+    "dist",
+    "/src/posdb.db"
   ],
   "mac": {
     "artifactName": "${productName}_${version}.${ext}",
@@ -34,5 +35,5 @@
     "perMachine": false,
     "allowToChangeInstallationDirectory": true,
     "deleteAppDataOnUninstall": false
-  }
+  },
 }
