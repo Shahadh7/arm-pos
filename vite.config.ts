@@ -27,17 +27,20 @@ export default defineConfig(({ command }) => {
       }
     },
 
-    build: {
-      rollupOptions: {
-        external: [{sequelize: "require('sequelize')", sqlite3: "require('sqlite3')"}], // add this line
-      },
-    },
+    //uncomment these when build
+    
+    // build: {
+    //   rollupOptions: {
+    //     external: [{sequelize: "require('sequelize')", sqlite3: "require('sqlite3')"}], // add this line
+    //   },
+    // },
 
     
 
     plugins: [
       vue(),
-      viteCommonjs(),
+      //uncomment blow when build
+      // viteCommonjs(),
       electron([
         {
           // Main-Process entry file of the Electron App.
@@ -83,14 +86,17 @@ export default defineConfig(({ command }) => {
       renderer(),
     ],
 
-    optimizeDeps: {
-      force: true,
-      esbuildOptions: {
-        plugins: [
-          esbuildCommonjs([{sequelize: "require('sequelize')", sqlite3: "require('sqlite3')"}]),
-        ],
-      },
-    },
+
+    //uncomment these when build
+
+    // optimizeDeps: {
+    //   force: true,
+    //   esbuildOptions: {
+    //     plugins: [
+    //       esbuildCommonjs([{sequelize: "require('sequelize')", sqlite3: "require('sqlite3')"}]),
+    //     ],
+    //   },
+    // },
 
     server: process.env.VSCODE_DEBUG && (() => {
       const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
