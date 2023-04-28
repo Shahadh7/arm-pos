@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import './samples/node-api'
+// import './samples/node-api'
 import router from './router';
 import { sequelize } from "./database"
 import PrimeVue from 'primevue/config';
