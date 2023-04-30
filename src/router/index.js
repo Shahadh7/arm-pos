@@ -1,12 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import AppLayout from '../layout/AppLayout.vue';
-import InventoryView from '../views/InventoryView.vue';
-import DocumentsView from '../views/DocumentsView.vue';
-import LostAndDamageView from '../views/LostAndDamageView.vue';
-import RepairingView from '../views/RepairingView.vue';
-import ReportsView from '../views/ReportsView.vue';
-import SettingsView from '../views/SettingsView.vue';
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -23,32 +17,51 @@ const router = createRouter({
                 {
                     path: 'inventory',
                     name: 'inventory',
-                    component: InventoryView
+                    component: () => import('../views/InventoryView.vue')
                 },
                 {
                     path: 'repairing',
                     name: 'repairing',
-                    component: RepairingView
+                    component: () => import('../views/RepairingView.vue')
                 },
                 {
                     path: 'lost-and-damage',
                     name: 'lost-and-damage',
-                    component: LostAndDamageView
+                    component: () => import('../views/LostAndDamageView.vue')
                 },
                 {
                     path: 'reports',
                     name: 'reports',
-                    component: ReportsView
+                    component: () => import('../views/ReportsView.vue')
                 },
                 {
                     path: 'documents',
                     name: 'documents',
-                    component: DocumentsView
+                    component: () => import('../views/DocumentsView.vue')
                 },
                 {
                     path: 'settings',
                     name: 'settings',
-                    component: SettingsView
+                    redirect: { name: 'app-settings' },
+                    component: () => import('../views/SettingsView.vue'),
+                    children: [
+                        {
+                            path: 'users',
+                            name: 'users',
+                            component: () => import('../views/UsersView.vue')
+                        },
+                        {
+                            path: 'app-settings',
+                            name: 'app-settings',
+                            component: () => import('../views/AppSettingsView.vue')
+                        },
+                        {
+                            path: 'backup-and-restore',
+                            name: 'backup-and-restore',
+                            component: () => import('../views/BackupAndRestoreView.vue')
+                        }
+
+                    ]
                 }
             ]
         },

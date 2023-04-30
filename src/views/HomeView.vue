@@ -55,39 +55,45 @@
             </div>
         </div>
 
-        {{ sharkList }}
-
+        {{ statusList }}
     </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, reactive } from 'vue'
-import { createShark, getAllSharks } from '../modelapi/shark'
+import moment from 'moment'
+import { createStatus, getAllStatus } from '../modelapi/status'
 
-interface NewUser {
-  name: string | null;
-  sharktype: string | null;
-  id?: number | null;
-  length: number | null;
+interface Status {
+    status: string | null;
+    id?: number;   
 }
 
-const sharkList  = reactive<NewUser[]>([])
+const statusList  = reactive<Status[]>([])
 
 
 onMounted(async () => {
-    
-    let createnew = await createShark({name: 'test', sharktype: 'test', length: 1})
 
-    if(createnew) {
-        console.log('created')
-        let list = await getAllSharks()
-        sharkList.push(...list)
-    } else {
-        console.log('not created')
-    }
+    // let createnew = await createStatus({ status: ''})
 
-    
+    // if(createnew) {
+    //     console.log('created')
+        
+    // } else {
+    //     console.log('not created')
+    // }
+
+    // let allstatus = await getAllStatus()
+
+    // if(allstatus) {
+    //     allstatus.forEach(element => {
+    //         statusList.push(element.dataValues)
+    //     });
+    // } else {
+    //     console.log('not found')
+    // }
 })
+
 
 </script>
 
