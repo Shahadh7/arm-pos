@@ -812,7 +812,7 @@ Repair.hasOne(Invoice, {
 
 // todo use sync to create tables
 // dropTables()
-createTables()
+// createTables()
 
 
 export { sequelize, Shark, Brand, PhoneModel, Purchase, Stock, Repair, RepairType, PreCheck, Customer, Status, RepairStock, Invoice, Payment, User };

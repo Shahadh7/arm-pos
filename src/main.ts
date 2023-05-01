@@ -14,6 +14,7 @@ import InputText from 'primevue/inputtext';
 import Password from 'primevue/password';
 import Toast from 'primevue/toast';
 import ToastService from 'primevue/toastservice';
+import ConfirmationService from 'primevue/confirmationservice';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 
@@ -34,6 +35,7 @@ app.component('DataTable', DataTable);
 app.component('Column', Column);
 
 app.use(ToastService)
+app.use(ConfirmationService)
 
 app.use(router)
 app.use(PrimeVue, { ripple: true })
